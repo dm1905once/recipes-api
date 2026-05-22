@@ -17,6 +17,10 @@ Objective: Describe a recipe with general recipe info
 
 
 class RecipeRating(models.Model):
+"""
+Adding class documentation for review purposes
+Objective: movel a rating
+"""
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name="ratings"
     )
