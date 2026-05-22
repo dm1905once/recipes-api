@@ -2,6 +2,9 @@ from rest_framework import serializers
 from .models import Recipe, RecipeRating
 
 class RecipeSerializer(serializers.ModelSerializer):
+"""
+Added doc for review purposes
+"""
     class Meta:
         model = Recipe
         fields = ["id", "title", "description", "time_minutes", "price"]

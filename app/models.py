@@ -3,10 +3,6 @@ from django.conf import settings
 
 
 class Recipe(models.Model):
-"""
-Adding class documentation for review purposes
-Objective: Describe a recipe with general recipe info
-"""
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     time_minutes = models.IntegerField()
@@ -17,10 +13,6 @@ Objective: Describe a recipe with general recipe info
 
 
 class RecipeRating(models.Model):
-"""
-Adding class documentation for review purposes
-Objective: movel a rating
-"""
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name="ratings"
     )
