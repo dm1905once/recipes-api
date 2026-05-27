@@ -21,7 +21,7 @@ llm = OpenAI(
 )
 
 # Github
-git = Github(os.getenv("GITHUB_TOKEN")) if os.getenv("GITHUB_TOKEN") else Github()
+git = Github(auth=Auth.Token(os.getenv("GITHUB_TOKEN"))) if os.getenv("GITHUB_TOKEN") else None
 full_repo_name = os.getenv("REPOSITORY")
 pr_number = os.getenv("PR_NUMBER")
 
