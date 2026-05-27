@@ -121,7 +121,7 @@ def post_review_to_github(pr_number: int, comment:str) -> list:
     try:
         repo = git.get_repo(full_repo_name)
         review = repo.get_pull(pr_number).create_review(body=comment)
-        return [{'success': 'Review posted successfully'}]
+        return [{'success': f'Review posted successfully with state {review.state}'}]
     except GithubException as e:
         return [{'error': {e.data.get('message')} }]
 
@@ -167,9 +167,8 @@ commentor_agent = FunctionAgent(
          - the PR details, 
          - commit details to obtain the changed files, 
          - file contents and 
-         - any other repo files you may need, 
-        and wait for the results.
-        Do not handoff until calling the ContextAgent for the PR details.
+         - any other repo files you may need, and wait for the results.
+        IMPORTANT! Do not handoff to other agent until calling the ContextAgent for the PR details.
         After obtaining the PR context from the ContextAgent, ensure to do the following for a thorough review: 
          - Once you have asked for all the needed information, write a good ~200-300 word review in markdown format detailing: \n
             - What is good about the PR? \n
