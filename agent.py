@@ -120,7 +120,7 @@ def post_review_to_github(pr_number: int, comment:str) -> list:
     """
     try:
         repo = git.get_repo(full_repo_name)
-        review = repo.get_pull(pr_number).create_review(body=comment)
+        review = repo.get_pull(pr_number).create_review(body=comment, event="COMMENT")
         return [{'success': f'Review posted successfully with state {review.state}'}]
     except GithubException as e:
         return [{'error': {e.data.get('message')} }]
